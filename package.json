@@ -1,0 +1,37 @@
+{
+  "name": "errands",
+  "version": "1.0.0",
+  "description": "Keep on Schedule and task by inputting your errands and letting us help you accomplish them.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dryguy99/Errands.git"
+  },
+  "keywords": [
+    "errands",
+    "google",
+    "maps",
+    "yelp",
+    "time",
+    "management"
+  ],
+  "author": "timothy dry, allysa santopadre, kris jackson, matthew jakobovic, tom frazzitta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dryguy99/Errands/issues"
+  },
+  "homepage": "https://github.com/dryguy99/Errands#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mysql": "^2.13.0",
+    "sequelize": "^3.30.4"
+  },
+  "engines": {
+    "node": "7.8.0"
+  }
+}
