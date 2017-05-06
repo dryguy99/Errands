@@ -39,7 +39,7 @@ app.use(allowCrossDomain);
 //     console.log('I just loaded google maps api');
 // });
 // Requiring our models for syncing
-//var db = require("./models");
+var db = require("./models");
 
 // Sets up the Express app to handle data parsing
 
@@ -72,9 +72,9 @@ require("./routes/todo-api-routes.js")(app);
 // require("./routes/author-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our express app
-//db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
-//});
+});
 

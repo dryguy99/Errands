@@ -1,10 +1,27 @@
 
 module.exports = function (sequelize, DataTypes) {
-	var todos = sequelize.define("todos",{
-		todos_task: {
+	var todos = sequelize.define("todos", {
+		week_day: {
 			type: DataTypes.STRING,
 			validate: { 
 				len: [1] }
+		},
+		user_id: {
+			type: DataTypes.STRING,
+			validate: { 
+				len: [1] }
+		},
+		task_id: {
+			type: DataTypes.STRING,
+			validate: {len: [1] }
+		},
+		start_time: {
+			type: DataTypes.STRING,
+			validate: {len: [1] }
+		},
+		duration: {
+			type: DataTypes.STRING,
+			validate: {len: [1] }
 		}
 	},
 
