@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
 	  		classMethods: {
 	    		associate: function(models) {
 	          		// A user (foreignKey) is required or a todo task can't be made
-	          		todo.belongsTo(models.users, {
+	          		todos.belongsTo(models.users, {
 	            		foreignKey: {
 	              		allowNull: false
 	            		}
