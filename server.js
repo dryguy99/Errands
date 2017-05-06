@@ -6,6 +6,7 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
+//var GoogleMapsLoader = require('google-maps');
 
 // Sets up the Express App
 // =============================================================
@@ -26,6 +27,15 @@ var allowCrossDomain = function(req, res, next) {
 };
 app.use(allowCrossDomain);
 
+// GoogleMapsLoader.KEY = "AIzaSyAR_p6CcoLnuOI8m9N_LcEFzW5whT1d6X0";
+// GoogleMapsLoader.load(function(google) {
+//     new google.maps.Map(el, options);
+//     console.log("el: " + el);
+//     console.log("options: " + options);
+// });
+// GoogleMapsLoader.onLoad(function(google) {
+//     console.log('I just loaded google maps api');
+// });
 // Requiring our models for syncing
 //var db = require("./models");
 
@@ -37,12 +47,14 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Static directory
 app.use(express.static("./public"));
+app.post('/login', passport.authenticate('local', { successRedirect: '/',
+                                                    failureRedirect: '/login' }));
 
 // Routes =============================================================
-
-require("./routes/html-routes.js")(app);
-require("./routes/post-api-routes.js")(app);
-require("./routes/author-api-routes.js")(app);
+require(".routes/login-routes.js")(app);
+// require("./routes/html-routes.js")(app);
+// require("./routes/post-api-routes.js")(app);
+// require("./routes/author-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our express app
 //db.sequelize.sync({ force: true }).then(function() {
