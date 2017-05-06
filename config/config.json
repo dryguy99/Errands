@@ -2,14 +2,14 @@
   "development": {
     "username": "root",
     "password": "test",
-    "database": "burgers_db",
+    "database": "errands_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "test",
-    "database": "burgers_db",
+    "database": "errands_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

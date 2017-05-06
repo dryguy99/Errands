@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Creators = sequelize.define("Creators", {
+  var users = sequelize.define("users", {
     // Giving the Author model a name of type STRING
     name: {
       type: DataTypes.STRING,
@@ -14,12 +14,12 @@ module.exports = function(sequelize, DataTypes) {
         associate: function(models) {
           // Associating Author with Posts
           // When an Author is deleted, also delete any associated Posts
-          Creators.hasMany(models.Burgers, {
+          user.hasMany(models.todos, {
             onDelete: "cascade"
           });
         }
       }
     }
   );
-  return Creators;
+  return users;
 };
