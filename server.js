@@ -6,6 +6,8 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
+//var cookieParser = require('cookie-parser');
+var session = require('express-session');
 //var GoogleMapsLoader = require('google-maps');
 
 // Sets up the Express App
@@ -40,6 +42,18 @@ app.use(allowCrossDomain);
 //var db = require("./models");
 
 // Sets up the Express app to handle data parsing
+
+//app.use(cookieParser());
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { }
+}))
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy 
+  sess.cookie.secure = true // serve secure cookies 
+}
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
@@ -47,12 +61,11 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Static directory
 app.use(express.static("./public"));
-app.post('/login', passport.authenticate('local', { successRedirect: '/',
-                                                    failureRedirect: '/login' }));
+
 
 // Routes =============================================================
-require(".routes/login-routes.js")(app);
-// require("./routes/html-routes.js")(app);
+require("./routes/login-routes.js")(app);
+//require("./routes/html-routes.js")(app);
 // require("./routes/post-api-routes.js")(app);
 // require("./routes/author-api-routes.js")(app);
 
