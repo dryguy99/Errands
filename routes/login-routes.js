@@ -27,15 +27,16 @@ module.exports = function(app) {
 // provider for authentication.  When complete, the provider will redirect
 // the user back to the application at:
 //     /auth/openid/return
-	app.post('/auth/openid', passport.authenticate('openid'));
+	// app.post('/auth/openid', passport.authenticate('openid'));
 
 // The OpenID provider has redirected the user back to the application.
 // Finish the authentication process by verifying the assertion.  If valid,
 // the user will be logged in.  Otherwise, authentication has failed.
 	app.get('/auth/openid/return',
-  		passport.authenticate('openid', { successRedirect: '/',
-                                    	failureRedirect: '/login' }));
-	
+  		passport.authenticate( { successRedirect: '/',
+                                    	failureRedirect: '/login', 
+                                    	 failureFlash: true}));
+
 
 	app.post('/login', passport.authenticate('local', 
 		function(req, res) {

@@ -1,8 +1,67 @@
+// all javascript should end up here
+var url = "http://localhost:3000/"
+var username = "";
+var email = "";
+var pass = "";
+var signup = {
+	username: "",
+	password: "",
+	email: ""
+};
 
-
-
-$(document).ready( function () {
-(function(root,factory){if(root===null){throw new Error("Google-maps package can be used only in browser")}if(typeof define==="function"&&define.amd){define(factory)}else if(typeof exports==="object"){module.exports=factory()}else{root.GoogleMapsLoader=factory()}})(typeof window!=="undefined"?window:null,function(){"use strict";var googleVersion="3.18";var script=null;var google=null;var loading=false;var callbacks=[];var onLoadEvents=[];var originalCreateLoaderMethod=null;var GoogleMapsLoader={};GoogleMapsLoader.URL="https://maps.googleapis.com/maps/api/js";GoogleMapsLoader.KEY=null;GoogleMapsLoader.LIBRARIES=[];GoogleMapsLoader.CLIENT=null;GoogleMapsLoader.CHANNEL=null;GoogleMapsLoader.LANGUAGE=null;GoogleMapsLoader.REGION=null;GoogleMapsLoader.VERSION=googleVersion;GoogleMapsLoader.WINDOW_CALLBACK_NAME="__google_maps_api_provider_initializator__";GoogleMapsLoader._googleMockApiObject={};GoogleMapsLoader.load=function(fn){if(google===null){if(loading===true){if(fn){callbacks.push(fn)}}else{loading=true;window[GoogleMapsLoader.WINDOW_CALLBACK_NAME]=function(){ready(fn)};GoogleMapsLoader.createLoader()}}else if(fn){fn(google)}};GoogleMapsLoader.createLoader=function(){script=document.createElement("script");script.type="text/javascript";script.src=GoogleMapsLoader.createUrl();document.body.appendChild(script)};GoogleMapsLoader.isLoaded=function(){return google!==null};GoogleMapsLoader.createUrl=function(){var url=GoogleMapsLoader.URL;url+="?callback="+GoogleMapsLoader.WINDOW_CALLBACK_NAME;if(GoogleMapsLoader.KEY){url+="&key="+GoogleMapsLoader.KEY}if(GoogleMapsLoader.LIBRARIES.length>0){url+="&libraries="+GoogleMapsLoader.LIBRARIES.join(",")}if(GoogleMapsLoader.CLIENT){url+="&client="+GoogleMapsLoader.CLIENT+"&v="+GoogleMapsLoader.VERSION}if(GoogleMapsLoader.CHANNEL){url+="&channel="+GoogleMapsLoader.CHANNEL}if(GoogleMapsLoader.LANGUAGE){url+="&language="+GoogleMapsLoader.LANGUAGE}if(GoogleMapsLoader.REGION){url+="&region="+GoogleMapsLoader.REGION}return url};GoogleMapsLoader.release=function(fn){var release=function(){GoogleMapsLoader.KEY=null;GoogleMapsLoader.LIBRARIES=[];GoogleMapsLoader.CLIENT=null;GoogleMapsLoader.CHANNEL=null;GoogleMapsLoader.LANGUAGE=null;GoogleMapsLoader.REGION=null;GoogleMapsLoader.VERSION=googleVersion;google=null;loading=false;callbacks=[];onLoadEvents=[];if(typeof window.google!=="undefined"){delete window.google}if(typeof window[GoogleMapsLoader.WINDOW_CALLBACK_NAME]!=="undefined"){delete window[GoogleMapsLoader.WINDOW_CALLBACK_NAME]}if(originalCreateLoaderMethod!==null){GoogleMapsLoader.createLoader=originalCreateLoaderMethod;originalCreateLoaderMethod=null}if(script!==null){script.parentElement.removeChild(script);script=null}if(fn){fn()}};if(loading){GoogleMapsLoader.load(function(){release()})}else{release()}};GoogleMapsLoader.onLoad=function(fn){onLoadEvents.push(fn)};GoogleMapsLoader.makeMock=function(){originalCreateLoaderMethod=GoogleMapsLoader.createLoader;GoogleMapsLoader.createLoader=function(){window.google=GoogleMapsLoader._googleMockApiObject;window[GoogleMapsLoader.WINDOW_CALLBACK_NAME]()}};var ready=function(fn){var i;loading=false;if(google===null){google=window.google}for(i=0;i<onLoadEvents.length;i++){onLoadEvents[i](google)}if(fn){fn(google)}for(i=0;i<callbacks.length;i++){callbacks[i](google)}callbacks=[]};return GoogleMapsLoader});
-
-
+$(document).on("click", "#submitBtn", function (){
+	event.preventDefault();
+	console.log("submit create user");
+	$('#error1').css("display", "none");
+	$('#error2').css("display", "none");
+	$('#error3').css("display", "none");
+	$('#error4').css("display", "none");
+	if ($('#userNameInput').val().trim().length > 2 && $('#passwordInput').val().trim().length > 6 &&  $('#emailInput').val().trim().includes('@') && $('#emailInput').val().trim().length > 8) {
+			signup.username = $('#userNameInput').val().trim();
+			signup.email = $('#emailInput').val().trim();
+			signup.password = $('#passwordInput').val().trim();
+			console.log(JSON.stringify(signup));
+			console.log($('#userNameInput').val().trim().length);
+			$('#userNameInput').val("");
+			$('#emailInput').val("");
+			$('#passwordInput').val("");
+			signUp (signup);
+	} else if ($('#userNameInput').val().trim().length < 3){ 
+			$('#error1').css("display", "inline");
+			$('#error1').html("Username must be longer than 3 characters.");
+	} else if ($('#passwordInput').val().trim().length < 7) {
+			$('#error2').css("display", "inline");
+			$('#error2').html("Password must be longer than 6 characters.");
+	} else {
+		$('#error3').css("display", "inline");
+		$('#error3').html("Invalid email, please check and resubmit.");
+	}
+	
 });
+
+
+function signUp (data) {
+	var urlTemp = url + "/auth/openid/return/";
+        $.ajax({
+            type: "GET",
+            url: urlTemp,
+            timeout: 2000,
+            data: data,
+            success: function(data) {
+                //show content to console for testing
+                //console.log(JSON.stringify(data));
+            },
+            error: function(jqXHR, textStatus, err) {
+                //show error message
+                console.log('text status '+textStatus+', err '+err);
+                if (err === "timeout") {
+                	console.log("waiting for server...");
+                	postItem(myJson);
+                } 
+                $('#error4').css("display", "inline");
+                $('#error4').html("error: " + err);
+                
+            }
+        });
+
+}

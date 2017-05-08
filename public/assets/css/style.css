@@ -1,12 +1,98 @@
-body {
-	width: 95vw;
-	background: #f0f0f5;
+#right-panel {
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+    }
+    #right-panel select, #right-panel input {
+    font-size: 15px;
+    }
+    /*#right-panel select {
+    width: 100%;
+    }*/
+    #right-panel i {
+    font-size: 12px;
+    }
+    html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: lavender;
+    }
+    #map {
+    height: 300px;
+    width: 100%;
+    border:3px solid black;
+    top:-15px;
+    position: relative;
+     color:white;
+    font-weight: bold;
+    
+    }
+    /*#mybody {
+    	background: url('../images/shopping.jpg');
+    	/*opacity: 0.9;*/
+    	width: 100vw;
+    }*/
+    
+    .jumbotron{
+        height: 366px;
+    }
+    /*#right-panel {
+    margin: 20px;
+    border-width: 2px;
+    width: 20%;
+    height: 400px;
+    float: left;
+    text-align: left;
+    padding-top: 0;
+    }
+
+*/
+    p{
+        font-size: 16px;
+    }
+ #directions-panel,#directions-panel-1,#directions-panel-2 {
+    padding: 10px;
+    /*overflow: scroll;
+    height: 210px;*/
+    position: relative;
+   /* top:-40px;*/
+          }
+#error1, #error2, #error3, #error4 {
+	background: #ffffcc;
+	color: #0000e6;
+	display: none;
 }
 
+.profile{
+    font-size:24px;
+    font-weight: bold;
+  font-family: 'Permanent Marker', cursive;
+}
 
+.post{
+    height:350px;
+    width:400px;
+}
 
+#position{
+    position:relative;
+    top: -260px;
+    left: 80px;
+    font-size: bold
+}
 
+li,ol{
+    color: #156C9B;
+    font-weight: bold;
+    font-size: 20px;
+}
 
+.btn-primary,.btn{
+        width:120px;
+}
 .myfooter {
 	font-size: 1.5vw;
+	color: white;
+	background: none;
 }
