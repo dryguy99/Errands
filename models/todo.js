@@ -6,11 +6,6 @@ module.exports = function (sequelize, DataTypes) {
 			validate: { 
 				len: [1] }
 		},
-		user_id: {
-			type: DataTypes.STRING,
-			validate: { 
-				len: [1] }
-		},
 		task_id: {
 			type: DataTypes.STRING,
 			validate: {len: [1] }
