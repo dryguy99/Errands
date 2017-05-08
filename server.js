@@ -6,10 +6,11 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
 //var cookieParser = require('cookie-parser');
 var session = require('express-session');
 //var GoogleMapsLoader = require('google-maps');
-
+SALT_WORK_FACTOR = 10;
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -28,6 +29,7 @@ var allowCrossDomain = function(req, res, next) {
     }
 };
 app.use(allowCrossDomain);
+app.use(methodOverride("_method"));
 
 // GoogleMapsLoader.KEY = "AIzaSyAR_p6CcoLnuOI8m9N_LcEFzW5whT1d6X0";
 // GoogleMapsLoader.load(function(google) {
@@ -45,7 +47,7 @@ var db = require("./models");
 
 //app.use(cookieParser());
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'catsmakeforbettersecurity',
   resave: false,
   saveUninitialized: true,
   cookie: { }
@@ -60,7 +62,7 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Static directory
-app.use(express.static("./public"));
+app.use('/public', express.static(__dirname + "/public"));
 
 
 // Routes =============================================================
@@ -68,11 +70,17 @@ app.use(express.static("./public"));
 require("./routes/login-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
 require("./routes/todo-api-routes.js")(app);
+require("./routes/application.js");
+//require(".routes/tasks-api-routes")(app);
 
 // require("./routes/author-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our express app
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({
+
+  //force: true
+
+}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

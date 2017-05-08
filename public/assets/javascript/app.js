@@ -4,7 +4,7 @@ var username = "";
 var email = "";
 var pass = "";
 var signup = {
-	username: "",
+	name: "",
 	password: "",
 	email: ""
 };
@@ -17,11 +17,10 @@ $(document).on("click", "#submitBtn", function (){
 	$('#error3').css("display", "none");
 	$('#error4').css("display", "none");
 	if ($('#userNameInput').val().trim().length > 2 && $('#passwordInput').val().trim().length > 6 &&  $('#emailInput').val().trim().includes('@') && $('#emailInput').val().trim().length > 8) {
-			signup.username = $('#userNameInput').val().trim();
+			signup.name = $('#userNameInput').val().trim();
 			signup.email = $('#emailInput').val().trim();
 			signup.password = $('#passwordInput').val().trim();
 			console.log(JSON.stringify(signup));
-			console.log($('#userNameInput').val().trim().length);
 			$('#userNameInput').val("");
 			$('#emailInput').val("");
 			$('#passwordInput').val("");
@@ -41,22 +40,22 @@ $(document).on("click", "#submitBtn", function (){
 
 
 function signUp (data) {
-	var urlTemp = url + "/auth/openid/return/";
+	var urlTemp = url + "register/";
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: urlTemp,
             timeout: 2000,
             data: data,
             success: function(data) {
                 //show content to console for testing
-                //console.log(JSON.stringify(data));
+                console.log(JSON.stringify(data));
             },
             error: function(jqXHR, textStatus, err) {
                 //show error message
                 console.log('text status '+textStatus+', err '+err);
                 if (err === "timeout") {
                 	console.log("waiting for server...");
-                	postItem(myJson);
+                	//postItem(myJson);
                 } 
                 $('#error4').css("display", "inline");
                 $('#error4').html("error: " + err);

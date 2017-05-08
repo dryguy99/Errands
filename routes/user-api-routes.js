@@ -26,8 +26,15 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/user", function(req, res) {
-    db.users.create(req.body).then(function(dbusers) {
+
+  app.post("/register", function(req, res) {
+    console.log("signup called: ");
+    db.users.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password
+    }).then(function(dbusers) {
+      console.log(dbusers);
       res.json(dbusers);
     });
   });
