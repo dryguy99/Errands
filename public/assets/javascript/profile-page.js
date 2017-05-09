@@ -1,4 +1,4 @@
-
+//globals
 var start;
 var end;
 var lat;
@@ -11,13 +11,15 @@ var d = new Date(moment().format('MM/DD/YYYY'))
 var time = moment().format('hh:mm');
 console.log(d)
 
+//map and geolocation
 function initMap() {
   lat = long = 0.0;
   navigator.geolocation.getCurrentPosition(function(location) {
     $('#name').text("Hello Tom")
     $('#date').html(e)
     $('#time').html(time)
-$("#submit-dest").slideUp(3000).slideDown(3000);
+    // $("#clear").hide();
+    //$("#submit-dest").slideUp(3000).slideDown(3000);
   
     console.log(location)
     lat= location.coords.latitude;
@@ -29,7 +31,7 @@ $("#submit-dest").slideUp(3000).slideDown(3000);
     console.log(d)
     mapOptions={
            center:new google.maps.LatLng(lat,long), 
-           zoom: 12,
+           zoom: 11,
            color:"blue",
            mapTypeId:google.maps.MapTypeId.ROADMAP
     }
@@ -47,18 +49,20 @@ $("#submit-dest").slideUp(3000).slideDown(3000);
 
 
   document.getElementById('submit-dest').addEventListener('click', function() {
-    //$("#directions-panel").empty();
-    $("#directions-panel-2").empty();
-    calculateAndDisplayRoute(directionsService, directionsDisplay);
-
-        
+    $('#submit-dest').hide();
+    $("#clear").show();
+    $('#clear').css("background-color","red");
+    $('#clear').text("clear");
+    $("#post").hide();
+    calculateAndDisplayRoute(directionsService, directionsDisplay); 
     });
   })
 }
 
+///markers waypoint
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   $("#directions-panel-2").empty();
- $("#directions-panel").toggle();
+  $("#directions-panel").toggle();
 
 //$("#directions-panel").toggle();
 
@@ -118,8 +122,9 @@ var waypts = [];
     }
   });
 
-
+//direction onclick function
 $("#dir").on("click",function(){
+$("#post").hide();
 $("#directions-panel-1").hide();
 $("#directions-panel-2").empty();
 $("#directions-panel").show();
@@ -129,11 +134,9 @@ $("#directions-panel").css("background-color"," #156C9B");
 $("#directions-panel").css("color","white");
 })
 
-$('#submit-dest').text("Update");
-$('#submit-dest').css("background-color","#337ab7");
-
-
-$("#list").on("click",function(){ 
+//list onclick function
+$("#list").on("click",function(){
+$("#post").hide(); 
 $("#directions-panel").hide();
 $("#directions-panel-2").empty();
 $("#directions-panel-1").show();
@@ -144,24 +147,28 @@ $('#submit-dest').css("background-color","red");
 $('#submit-dest').text("clear");
 })
 
-
-
+//add-a-friend onclick function
 $("#add-a-friend").on("click",function(){ 
-  console.log('HELLO')
+$("#post").hide();
 $("#directions-panel").hide();
 $("#directions-panel-1").hide();
 $("#directions-panel-2").show();
-
 $('#directions-panel-2').append("<form action='sharer.php' method='POST'>");
 $('#directions-panel-2 form').append("<div class='appm'>Add a Friend<div/>");
 $('#directions-panel-2 form').append("<input type='text' placeholder='Name' style='color:black' name='routename' id='rname'/>");
 $('#directions-panel-2 form').append("<br><br><input type='submit' id='savebutton' style='color:black' value='Save' />");
-
-
 $("#directions-panel-2").css("background-color"," #156C9B");
 $("#directions-panel-2").css("color","white");
 $('#submit-dest').css("background-color","red");
 $('#submit-dest').text("clear");
+})
 
+//clear onclick function
+$("#clear").on("click",function(){ 
+$("#directions-panel-2").empty();
+$("#directions-panel").hide();
+$("#directions-panel-1").hide();
+$("#directions-panel-2").hide();
+$("#post").show();
 })
 }
