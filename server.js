@@ -71,7 +71,7 @@ require("./routes/login-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
 require("./routes/todo-api-routes.js")(app);
 require("./routes/application.js");
-//require(".routes/tasks-api-routes")(app);
+require("./routes/task-api-routes.js")(app);
 
 // require("./routes/author-api-routes.js")(app);
 
