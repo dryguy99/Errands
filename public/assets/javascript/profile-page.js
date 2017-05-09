@@ -172,3 +172,4 @@ $("#directions-panel-2").hide();
 $("#post").show();
 })
 }
+
