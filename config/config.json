@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "test",
+    "password": "WestField70!@#",
     "database": "errands_db",
     "host": "localhost",
     "dialect": "mysql"
