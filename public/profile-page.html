@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Faster+One|Grand+Hotel|Monoton|Permanent+Marker|Rancho" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <link rel="stylesheet" href="assets/css/profile-page.css">
+    <script src="assets/javascript/profile-page.js"></script>
+    <script src="assets/javascript/profile-modal.js"></script>
+    <!--  <link rel="stylesheet" href="style.css"> -->
+    <title>amenoi</title>
+    
+  </head>
+  <body>
+    <div class="container">
+      
+      <div class="jumbotron" style="background-color:#156C9B;" >
+        <div  id="map" class="text-center" style="font-size:80px;">Hello Tom</div>
+        <!--  <img class="post-2" src=""> -->
+      </div>
+      
+      <div class="row">
+        <div class="col-sm-4" >
+          <div>
+            <img class="post" src="assets/images/post.png">
+            <div id="position">
+              <ol> Upcoming Events<br><br>
+                <li>Dry Cleaning 9:30 am</li>
+                <br>
+                <li>Gym  11:30am</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="col-sm-4 text-center" >
+          <div class="profile" id="name"></div>
+          <div class="profile" id="date"> </div>
+          <div class="profile" id="time"> </div>
+          <br>
+          <br>
+          <div class="col-sm-4" ></div>
+          <div class="col-sm-4" >
+            <div id="wrap" class="text-center">
+              <button class="btn btn-primary text-center" type="button" id="submit-dest">Update</button>
+              <br><br>
+              <button class="btn btn-primary text-center" type="button" id="clear">Clear</button>
+              <br><br>
+              <button class="btn btn-primary text-center" type="button" id="dir">Directions</button>
+              <br><br>
+              
+              <button class="btn btn-primary text-center" type="button" id="list">list</button>
+              <br><br>
+              <button class="btn btn-primary text-center" type="button" id="add-a-friend">Share your list</button>
+              <br><br>
+              <!-- Trigger the modal with a button -->
+              <button type="button" class="btn btn-primary text-center" data-toggle="modal" data-target="#myModal">Create</button>
+              <div class="btn-group text-center">
+                
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                  <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">New Errand</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form class="form-horizontal">
+                          <fieldset>
+                            <!--  <legend>Legend</legend> -->
+                            <div class="form-group">
+                              <label for="task-input" class="col-lg-2 control-label">Task </label>
+                              <div class="col-lg-10">
+                                <input type="text" class="form-control" id="task-input">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="inputEmail" class="col-lg-2 control-label">Location</label>
+                              <div class="col-lg-10">
+                                <input type="text" class="form-control" id="location-input" >
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="inputEmail" class="col-lg-2 control-label">Time</label>
+                              <div class="col-lg-10">
+                                <input type="text" class="form-control" id="time-input" >
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="select" class="col-lg-2 control-label">Duration</label>
+                              <div class="col-lg-10">
+                                <select class="form-control text-center" id="day-input" >
+                                  <option>10</option>
+                                  <option>15</option>
+                                  <option>30</option>
+                                  <option>45</option>
+                                  <option>1</option>
+                                  
+                                </select>
+                                
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="textArea" class="col-lg-2 control-label">Notes</label>
+                              <div class="col-lg-10">
+                                <textarea class="form-control" rows="3" id="textArea"></textarea>
+                                <!-- <span class="help-block"></span> -->
+                              </div>
+                            </div>
+                            <!--   <div class="form-group">
+                              <label class="col-lg-2 control-label"></label>
+                              <div class="col-lg-10">
+                                <div class="radio">
+                                </div>
+                                
+                              </div>
+                            </div> -->
+                            <div class="form-group">
+                              <label for="select" class="col-lg-2 control-label">Day</label>
+                              <div class="col-lg-10">
+                                <select class="form-control  text-center" " id="day-input">
+                                  <option>Monday</option>
+                                  <option>Tuesday</option>
+                                  <option>Wednesday</option>
+                                  <option>Thursday</option>
+                                  <option>Friday</option>
+                                  <option>Saturday</option>
+                                  <option>Sunday</option>
+                                </select>
+                                
+                              </div>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox"> Repeat Errand
+                              </label>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="form-group">
+                              <div class="col-lg-10 col-lg-offset-2">
+                                <button type="button" class="btn btn-default" id="cancel" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                              </div>
+                            </div>
+                          </fieldset>
+                        </form>
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4" ></div>
+        </div>
+        
+        <div class="col-sm-4" id= "erase-button" class="pos">
+          <img id="post" class="post" src="assets/images/post.png" text="Hello">
+          <!-- <button class="btn btn-primary text-center" type="button" id="up">clear</button> -->
+          
+          <div id="directions-panel" style="overflow:auto">
+          </div>
+          <div id="directions-panel-1" style="overflow:auto">
+          </div>
+          <div id="directions-panel-2" style="overflow:auto">
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu0OEzVWaDQW4J0XxsukiXdnQeC2OzQCc&callback=initMap">
+    </script>
+  </body>
+</html>
