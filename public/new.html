@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="../assets/images/efavicon.jpg">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Faster+One|Grand+Hotel|Monoton|Permanent+Marker|Rancho" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="assets/javascript/java.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>amenoi</title>
+    
+  </head>
+  <body>
+    <div class="container">
+      
+      <div class="jumbotron" style="background-color:#156C9B;" >   
+        <div  id="map" class="text-center" style="font-size:80px;">Hello Tom</div>
+      </div>
+      
+
+      <div class="row">
+      <div class="col-sm-4" >
+      <div>
+      <img class="post" src="post.png">
+        <div id="position"> 
+        <ol> Upcoming Events<br><br>
+            <li>Dry Cleaning 9:30 am</li>
+            <br>
+             <li>Gym  11:30am</li>
+        </ol>
+        </div>
+      </div>
+      </div>
+  
+      
+        <div class="col-sm-4 text-center" >
+            <div class="profile" id="name"></div>
+           <div class="profile" id="date"> </div>
+           <div class="profile" id="time"> </div>
+          <br>
+          <br>
+
+
+           <div class="col-sm-4" ></div>
+           <div class="col-sm-4" >
+          <div id="wrap" class="text-center">
+            <button class="btn btn-primary text-center" type="button" id="submit-dest">Update</button>
+            <br><br>
+           
+            <button class="btn btn-primary text-center" type="button" id="dir">Directions</button>
+             <br><br>
+           
+            <button class="btn btn-primary text-center" type="button" id="list">list</button>
+            <br><br>
+              <button class="btn btn-primary text-center" type="button" id="add-a-friend">Share your list</button>
+           </div>
+            </div>
+            <div class="col-sm-4" ></div>
+           </div>
+
+        
+        <div class="col-sm-4" id= "erase-button">
+          <!-- <button class="btn btn-primary text-center" type="button" id="up">clear</button> -->
+        
+          <div id="directions-panel" style="overflow:auto">
+          </div>
+          <div id="directions-panel-1" style="overflow:auto">
+          </div>
+          <div id="directions-panel-2" style="overflow:auto">
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu0OEzVWaDQW4J0XxsukiXdnQeC2OzQCc&callback=initMap">
+    </script>
+  </body>
+</html>
