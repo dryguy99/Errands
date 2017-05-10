@@ -7,15 +7,15 @@
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
+	<!-- no such stylesheet as the one listed below-->
 	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+	<script type="text/javascript" language="javascript" src="../assets/javascript/facebook.js"></script>
 		
  	
 </head>
 <body style="background-color: #3380cc;">
-
 
 <div class="container" >
 
@@ -27,18 +27,23 @@
 	
 	<div class="form-actions" style="margin:0; text-align: center;">
 		<button style="background-color: white; color:#3380cc" type="submit" class="btn btn-lg" id="login">Login</button>
-		<a href ="signUp.html"><button style="background-color: white; color:#3380cc" type="submit" class="btn btn-lg" id="signup">Sign-up</button></a>		
+		<a href ="signUp.html"><button style="background-color: white; color:#3380cc" type="submit" class="btn btn-lg" id="signup">Sign-up</button></a>	
+		<div
+		  class="fb-like"
+		  data-share="true"
+		  data-width="450"
+		  data-show-faces="true">
+		</div>
+		<div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>	
 	</div>
 
 	<div>
 		<p> May The Wind Always Be At Your Back </p>
 	</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
 </div>
+			
+
+	
 <!-- our footer with links to our profiles-->
 	<footer class="row footer container-fluid">
 	 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
@@ -81,7 +86,7 @@ $('body').append($form);
 }
 form{
 	text-align: center;
-	color: white;
+	color: black;
 }
 #submit{
 	background: white;
