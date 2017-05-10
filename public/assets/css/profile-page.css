@@ -28,11 +28,6 @@
     font-weight: bold;
     
     }
-    /*#mybody {
-    	background: url('../images/shopping.jpg');
-    	/*opacity: 0.9;*/
-    	width: 100vw;
-    }*/
     
     .jumbotron{
         height: 366px;
@@ -48,20 +43,12 @@
     }
 
 */
-    p{
-        font-size: 16px;
-    }
+p{
+  font-size: 16px;
+}
  #directions-panel,#directions-panel-1,#directions-panel-2 {
-    padding: 10px;
-    /*overflow: scroll;
-    height: 210px;*/
-    position: relative;
-   /* top:-40px;*/
-          }
-#error1, #error2, #error3, #error4 {
-	background: #ffffcc;
-	color: #0000e6;
-	display: none;
+ padding: 10px;
+ position: relative;
 }
 
 .profile{
@@ -70,7 +57,7 @@
   font-family: 'Permanent Marker', cursive;
 }
 
-.post{
+.post,#post-1{
     height:350px;
     width:400px;
 }
@@ -90,9 +77,4 @@ li,ol{
 
 .btn-primary,.btn{
         width:120px;
-}
-.myfooter {
-	font-size: 1.5vw;
-	color: white;
-	background: none;
 }
