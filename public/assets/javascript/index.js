@@ -6,11 +6,11 @@ $( "#name" ).hover(
  }
 );
 
-$(document).on("click", "#signin", function() {
-        window.open("https://.....");
-        });
+// $(document).on("click", "#signin", function() {
+//         window.open("https://.....");
+//         });
 
 
-$(document).on("click", "#login", function() {
-        window.open("https://.....");
-        });
+// $(document).on("click", "#login", function() {
+//         window.open("https://.....");
+//         });
