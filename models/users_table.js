@@ -63,8 +63,9 @@ module.exports = function(sequelize, DataTypes) {
     });
     bcrypt.hash(user.password, salt, null, function(err, hash) {
       if (err) return next(err);
+      console.log("before: " + user.password);
       user.password = hash;
-      console.log(fn);
+      console.log("after" + user.password);
       return fn(null, user);
     });
   });

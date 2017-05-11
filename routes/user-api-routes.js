@@ -32,7 +32,8 @@ module.exports = function(app) {
     db.users.create({
       username: req.body.username,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      phonenumber: req.body.phonenumber
     }).then(function(dbusers) {
       console.log(dbusers);
       res.json(dbusers);
