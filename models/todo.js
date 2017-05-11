@@ -17,6 +17,14 @@ module.exports = function (sequelize, DataTypes) {
 		duration: {
 			type: DataTypes.STRING,
 			validate: {len: [1] }
+		},
+		location: {
+			type: DataTypes.STRING,
+			validate: {len: [1] }
+		},
+		note: {
+			type: DataTypes.STRING,
+			}
 		}
 	},
 
