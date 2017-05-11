@@ -7,6 +7,9 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
+var passport = require('passport');
+var application = require('./routes/application.js');
+var path = require("path");
 //var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var Nexmo = require('nexmo');
@@ -64,6 +67,19 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Static directory
 app.use('/public', express.static(__dirname + "/public"));
+app.use(passport.initialize());
+app.use(passport.session());
+app.get('/login', application.IsAuthenticated, function(req, res) {
+     res.sendFile(path.join(__dirname + '/public/profile-page.html'));
+  });
+    app.post('/authenticate',
+      passport.authenticate('local', {
+        successRedirect: '/login',
+        failureRedirect: '/public'
+      })
+    );
+    app.get('/logout', application.destroySession);
+    app.get('/signup');
 
 
 //nexmo
@@ -99,7 +115,7 @@ app.use('/public', express.static(__dirname + "/public"));
 
 // Routes =============================================================
 
-require("./routes/login-routes.js")(app);
+require("./routes/login-routes.js");
 require("./routes/user-api-routes.js")(app);
 require("./routes/todo-api-routes.js")(app);
 require("./routes/application.js");

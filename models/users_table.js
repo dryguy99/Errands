@@ -3,7 +3,7 @@ var  bcrypt = require('bcrypt-nodejs');
 module.exports = function(sequelize, DataTypes) {
   var users = sequelize.define("users", {
     // Giving the Author model a name of type STRING
-    name: {
+    username: {
       type: DataTypes.STRING,
       unique: true,
       validate: {
