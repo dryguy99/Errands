@@ -14,10 +14,6 @@ var login={
 }
 var a; 
 console.log("hey")
-$("#submitBtn").hide();
-$(".submitBtn2").hide();
-$("#myform").hide();
-$(".submitBtn2").hide();
 
 
 $( "#name" ).hover(
@@ -32,28 +28,32 @@ $( this ).find( "span:last" ).remove();
 $(document).on("click", "#mod", function (){
 	console.log($(this).val())
 	a= $(this).val();
+	// $("#submitBtn2").hide();
+	// $("#myform").show();
+	// $("#submitBtn2").hide();
+	// $("#submitBtn").show();
 // $("#mod").on("click",function(){
-	console.log("hey")
-	$("#push").show();
+	$("#boom").show();
+	$("#boom-1").hide();
+	//$("#push").show();
 	$("#userNameInput").text("Create Username");
 	$("#passwordInput").text("Create Password");
-	//$("#submitBtn").show();
-	$(".submitBtn2").show();
-	$("#myform").hide();
-    $("#form-1").hide();
-
-
 })
+
+
 $(document).on("click", "#mod-1", function (){
-//$("#mod-1").on("click",function(){
-	$("#push").hide();
+	$("#boom-1").show();
+	$("#boom").hide();
+	// $("#push").hide();
+	// $("#myform").show();
+	// $("#submitBtn").hide();
+	// $("#submitBtn2").show();
+	// $("#submitBtn2").show();
+	
 	console.log($(this).val())
 	$("#userNameInput").text("Username");
 	$("#passwordInput").text("Password");
-	$("#submitBtn2").show();
-	$("#submitBtn").hide();
-	$("#form").hide();
-    $("#form-1").show();
+	
 
 
 })
