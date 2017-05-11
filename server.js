@@ -12,6 +12,7 @@ var application = require('./routes/application.js');
 var path = require("path");
 //var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var Nexmo = require('nexmo');
 //var GoogleMapsLoader = require('google-maps');
 SALT_WORK_FACTOR = 10;
 // Sets up the Express App
@@ -81,6 +82,37 @@ app.get('/login', application.IsAuthenticated, function(req, res) {
     app.get('/signup');
 
 
+//nexmo
+// var nexmo = new Nexmo({
+//     apiKey: "412fffbf",
+//     apiSecret: "f17a3225c8f51740",
+//   });
+
+// nexmo.message.sendSms(
+//     '12014645806', '17327789840', "This is working!!",
+//       (err, responseData) => {
+//         if (err) {
+//           console.log('there was an error');
+//           console.log(err);
+//         } else {
+//           //console.log(responseData);
+//           console.log('message sent succesfully!');
+//         }
+//       }
+//    );
+
+// db.users.create({
+//       name: "alyssa santopadre",
+//       email: "alyssasantopadre.com",
+//       password: "password",
+//       phonenumber: "17327789840"
+//     }).then(function(data) {
+
+//       console.log(data);
+//       console.log('it added!!');
+//     });
+
+
 // Routes =============================================================
 
 require("./routes/login-routes.js");
@@ -94,7 +126,7 @@ require("./routes/task-api-routes.js")(app);
 // Syncing our sequelize models and then starting our express app
 db.sequelize.sync({
 
-  //force: true
+  // force: true
 
 }).then(function() {
   app.listen(PORT, function() {

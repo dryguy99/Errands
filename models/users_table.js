@@ -21,6 +21,11 @@ module.exports = function(sequelize, DataTypes) {
     token: {
       type: DataTypes.STRING,
       validate: {len: [1] }
+      },
+    phonenumber: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {len: [1] }
       }
   },
     // Here we'll pass a second "classMethods" object into the define method
