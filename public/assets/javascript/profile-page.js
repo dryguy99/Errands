@@ -11,6 +11,7 @@ var d = new Date(moment().format('MM/DD/YYYY'))
 var time = moment().format('hh:mm');
 console.log(d)
 
+
 //map and geolocation
 function initMap() {
   lat = long = 0.0;
