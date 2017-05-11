@@ -6,7 +6,8 @@ var pass = "";
 var signup = {
 	name: "",
 	password: "",
-	email: ""
+	email: "",
+	phoneInput:""
 };
 var login={
 	name: "",
@@ -74,10 +75,13 @@ $(document).on("click", ".submitBtn", function (){
 			signup.name = $('#userNameInput').val().trim();
 			signup.email = $('#emailInput').val().trim();
 			signup.password = $('#passwordInput').val().trim();
+			signup.phoneInput = $('#phoneInput').val().trim();
+
 			console.log(JSON.stringify(signup));
 			$('#userNameInput').val("");
 			$('#emailInput').val("");
 			$('#passwordInput').val("");
+			$("#phoneInput").val("");
 			signUp (signup);
 	} else if ($('#userNameInput').val().trim().length < 3){ 
 			$('#error1').css("display", "inline");
@@ -103,6 +107,8 @@ $(document).on("click", "#submitBtn2", function (){
 			$('#userNameInput').val("");
 			$('#emailInput').val("");
 			$('#passwordInput').val("");
+			$('#phoneInput').val("");
+
 			Authorize(login);
 });
 
