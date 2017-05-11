@@ -7,7 +7,7 @@ var signup = {
 	username: "",
 	password: "",
 	email: "",
-	phoneInput:""
+	phonenumber:""
 };
 var login={
 	username: "",
@@ -58,7 +58,7 @@ $(document).on("click", "#mod-1", function (){
 
 
 
-$(document).on("click", ".submitBtn", function (){
+$(document).on("click", "#submitBtn", function (){
 	console.log(a);
 	event.preventDefault();
 	console.log("submit create user");
@@ -72,7 +72,7 @@ $(document).on("click", ".submitBtn", function (){
 			signup.username = $('#userNameInput').val().trim();
 			signup.email = $('#emailInput').val().trim();
 			signup.password = $('#passwordInput').val().trim();
-			signup.phoneInput = $('#phoneInput').val().trim();
+			signup.phonenumber = $('#phoneInput').val().trim();
 
 			console.log(JSON.stringify(signup));
 			$('#userNameInput').val("");
@@ -109,6 +109,7 @@ $(document).on("click", "#submitBtn2", function (){
 });
 
 function signUp (data) {
+	console.log(JSON.stringify(data));
     var urlTemp = url + "register/";
         $.ajax({
             type: "POST",
@@ -147,6 +148,7 @@ function Authorize(data){
             success: function(data) {
                     if(data.username==="")
                 console.log(JSON.stringify(data));
+            	console.log("authenticted");
             },
             error: function(jqXHR, textStatus, err) {
                 //show error message
