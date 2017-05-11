@@ -1,5 +1,6 @@
 
 exports.IsAuthenticated = function(req, res, next) {
+	console.log("Am I Authorized?: " + req.isAuthenticated());
 	if (req.isAuthenticated()) {
 		next();
 	} else {
