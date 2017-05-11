@@ -1,6 +1,6 @@
 
 exports.IsAuthenticated = function(req, res, next) {
-	if (req.IsAuthenticated()) {
+	if (req.isAuthenticated()) {
 		next();
 	} else {
 		next(new Error(401));

@@ -7,8 +7,12 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
+var passport = require('passport');
+var application = require('./routes/application.js');
+var path = require("path");
 //var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var Nexmo = require('nexmo');
 //var GoogleMapsLoader = require('google-maps');
 SALT_WORK_FACTOR = 10;
 // Sets up the Express App
@@ -63,11 +67,55 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Static directory
 app.use('/public', express.static(__dirname + "/public"));
+app.use(passport.initialize());
+app.use(passport.session());
+app.get('/login', application.IsAuthenticated, function(req, res) {
+     res.sendFile(path.join(__dirname + '/public/profile-page.html'));
+  });
+    app.post('/authenticate',
+      passport.authenticate('local', {
+        successRedirect: '/login',
+        failureRedirect: '/public'
+      })
+    );
+    app.get('/logout', application.destroySession);
+    app.get('/signup');
+
+
+//nexmo
+// var nexmo = new Nexmo({
+//     apiKey: "412fffbf",
+//     apiSecret: "f17a3225c8f51740",
+//   });
+
+// nexmo.message.sendSms(
+//     '12014645806', '17327789840', "This is working!!",
+//       (err, responseData) => {
+//         if (err) {
+//           console.log('there was an error');
+//           console.log(err);
+//         } else {
+//           //console.log(responseData);
+//           console.log('message sent succesfully!');
+//         }
+//       }
+//    );
+
+// db.users.create({
+//       name: "alyssa santopadre",
+//       email: "alyssasantopadre.com",
+//       password: "password",
+//       phonenumber: "17327789840"
+//     }).then(function(data) {
+
+//       console.log(data);
+//       console.log('it added!!');
+//     });
 
 
 // Routes =============================================================
 
-require("./routes/login-routes.js")(app);
+require("./routes/login-routes.js");
 require("./routes/user-api-routes.js")(app);
 require("./routes/todo-api-routes.js")(app);
 require("./routes/application.js");
@@ -78,7 +126,7 @@ require("./routes/task-api-routes.js")(app);
 // Syncing our sequelize models and then starting our express app
 db.sequelize.sync({
 
-  //force: true
+  // force: true
 
 }).then(function() {
   app.listen(PORT, function() {
