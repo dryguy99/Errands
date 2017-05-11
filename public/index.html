@@ -40,7 +40,7 @@
                                 <h4 class="modal-title" >Login</h4>
                             </div>
                             <div class="modal-body">
-                          <form>
+                          <form class="myform">
                                 <div class="form-group">
                                     <label for="">Username</label>
                                     <input type="text" class="form-control" id="userNameInput">
@@ -58,6 +58,26 @@
                                 <div class="singup" id="error">
                                 <button type="submit" class="btn btn-lg" id="submitBtn" style="color:red">Submit</button>
                                 <button type="submit" class="btn btn-lg" id="submitBtn2">Submit</button>
+                                </div>
+                         </form>
+                         <form class="submitBtn2" action="/authenticate/" method="POST">>>
+                                <div class="form-group">
+                                    <label for="">Username</label>
+                                    <input type="text" class="form-control" id="userNameInput">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Password</label>
+                                    <input type="text" class="form-control" id="passwordInput">
+                                </div>
+
+                                <div class="form-group" id="push">
+                                    <label for="">Enter email address</label>
+                                    <input type="text" class="form-control" id="emailInput">
+                                </div>
+                                <div class="singup" id="error">
+                                <button type="submit" class="btn btn-lg" id="submitBtn" style="color:red">Submit</button>
+                                <button type="submit" class="btn btn-lg">Submit</button>
                                 </div>
                          </form>
                                 

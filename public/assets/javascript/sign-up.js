@@ -8,10 +8,16 @@ var signup = {
 	password: "",
 	email: ""
 };
+var login={
+	name: "",
+	password: ""
+}
 var a; 
 console.log("hey")
 $("#submitBtn").hide();
-$("#submitBtn2").hide();
+$(".submitBtn2").hide();
+$("#myform").hide();
+$(".submitBtn2").hide();
 
 
 $( "#name" ).hover(
@@ -31,8 +37,10 @@ $(document).on("click", "#mod", function (){
 	$("#push").show();
 	$("#userNameInput").text("Create Username");
 	$("#passwordInput").text("Create Password");
-	$("#submitBtn").show();
-	$("#submitBtn2").hide();
+	//$("#submitBtn").show();
+	$(".submitBtn2").show();
+	$("#myform").hide();
+    $("#form-1").hide();
 
 
 })
@@ -44,12 +52,15 @@ $(document).on("click", "#mod-1", function (){
 	$("#passwordInput").text("Password");
 	$("#submitBtn2").show();
 	$("#submitBtn").hide();
+	$("#form").hide();
+    $("#form-1").show();
+
 
 })
 
 
 
-$(document).on("click", "#submitBtn", function (){
+$(document).on("click", ".submitBtn", function (){
 	console.log(a);
 	event.preventDefault();
 	console.log("submit create user");
@@ -84,14 +95,15 @@ $(document).on("click", "#submitBtn", function (){
 
 
 $(document).on("click", "#submitBtn2", function (){
-	signup.name = $('#userNameInput').val().trim();
-	signup.email = $('#emailInput').val().trim();
-	signup.password = $('#passwordInput').val().trim();
+	login.name = $('#userNameInput').val().trim();
+	login.email = $('#emailInput').val().trim();
+	login.password = $('#passwordInput').val().trim();
 	console.log(JSON.stringify(Authorize));
+
 			$('#userNameInput').val("");
 			$('#emailInput').val("");
 			$('#passwordInput').val("");
-			Authorize(signup)
+			Authorize(login);
 });
 
 
@@ -125,8 +137,9 @@ function signUp (data) {
 }
 
 
-function Authorize(){
-	var urlTemp = url + "SOMETHING/";
+function Authorize(data){
+	console.log("hello")
+	var urlTemp = url + "authenticate/";
         $.ajax({
             type: "POST",
             url: urlTemp,
