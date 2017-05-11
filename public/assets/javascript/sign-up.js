@@ -98,7 +98,6 @@ $(document).on("click", "#submitBtn2", function (){
   event.preventDefault();
 	login.username = $('#userNameInput').val().trim();
 	login.password = $('#passwordInput').val().trim();
-	console.log(JSON.stringify(Authorize));
 
 			$('#userNameInput').val("");
 			$('#emailInput').val("");
@@ -117,15 +116,16 @@ function signUp (data) {
             timeout: 2000,
             data: data,
             success: function(data) {
-                console.log(data)
                 //show content to console for testing
-                console.log(JSON.stringify(data));
+                console.log('success!!');
+                //console.log(JSON.stringify(data));
+                //window.open(url+"profile-page.html");
             },
             error: function(jqXHR, textStatus, err) {
                 //show error message
                 console.log('text status '+textStatus+', err '+err);
                 if (err === "timeout") {
-                $("#error").html("Username or password is incorrect")
+                $("#error").html("Username or password is incorrect");
                     console.log("waiting for server...");
                     //postItem(myJson);
                 } 
@@ -149,6 +149,9 @@ function Authorize(data){
                     if(data.username==="")
                 console.log(JSON.stringify(data));
             	console.log("authenticted");
+            	
+			//$.window.open("about:blank", "profile-page.html");
+			//window.open('http://localhost:3000/profile-page.html');
             },
             error: function(jqXHR, textStatus, err) {
                 //show error message
