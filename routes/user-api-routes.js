@@ -35,7 +35,6 @@ module.exports = function(app) {
       password: req.body.password,
       phonenumber: req.body.phonenumber
     }).then(function(dbusers) {
-      console.log(dbusers);
       res.json(dbusers);
     });
   });
