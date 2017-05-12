@@ -140,7 +140,7 @@ function signUp (data) {
 }
 
 function Authorize(data){
-    console.log("hey authorize me: " + data);
+    console.log("hey authorize me: " + data.body);
     var urlTemp = url + "authenticate/";
     console.log(urlTemp);
         $.ajax({

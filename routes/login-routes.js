@@ -23,8 +23,10 @@ passport.deserializeUser(function(user, done) {
 passport.use(new LocalStrategy(
   function(username, password, done){
     db.users.find({where:{username: username}}).then(function(user){
-      passwd = user ? user.password: ''
-      isMatch = db.users.validPassword(password, passwd, done, user)
+      passwd = user ? user.password: '';
+      console.log("object type: " + typeof password);
+      console.log("object2 type: " + typeof passwd);
+      isMatch = db.users.validPassword(password, passwd, done, user);
     });
   }
 ));

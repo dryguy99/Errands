@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
                 // A user (foreignKey) is required or a todo task can't be made
                 tasks.belongsTo(models.todos, {
                   foreignKey: {
-                    allowNull: false
+                    //allowNull: false
                   }
                 })
           }

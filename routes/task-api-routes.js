@@ -12,7 +12,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/tasks/:id", function(req, res) {
+  app.get("/api/task/:id", function(req, res) {
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Post
@@ -25,6 +25,19 @@ module.exports = function(app) {
       res.json(dbtasks);
     });
   });
+
+  app.get("/mytask:keyword", function (req,res) {
+    console.log('checking my tasks');
+    db.tasks.findAll({
+      where: {
+        keyword: req.params.keyword
+      },
+      include: [db.todos]
+    }).then(function(dbtasks) {
+      res.json(dbtasks);
+    });
+  });
+  
 
   app.post("/api/tasks", function(req, res) {
     db.tasks.create(req.body).then(function(dbtasks) {
