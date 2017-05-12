@@ -1,5 +1,10 @@
+-- To avoid errors:
+-- only run the create database and use lines, sequelize will create the rest
+
 CREATE DATABASE errands_db;
 USE errands_db;
+
+
 
 CREATE TABLE users (
 	id INT NOT NULL AUTO_INCREMENT,
