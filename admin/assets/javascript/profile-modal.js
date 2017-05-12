@@ -69,11 +69,11 @@ console.log("hheyyyy  starting profile-modal")
          event.preventDefault();
          console.log("hello - onclick #submit inside SubmitForm");
          Todo.week_day = $('#day-input').val().trim();
-         Todo.task = $('#task-input').val().trim();
-         Todo.location= $('#location-input').val().trim();
-         Todo.time= $('#time-input').val().trim();
-         Todo.duration= $('#duration-input').val();//.val()?
-         Todo.textArea= $("#textArea").val().trim();//.val()?
+         Todo.task_id = $('#task-input').attr("data-value");
+         Todo.start_time = $('#time-input').val().trim();
+         Todo.duration = $('#duration-input').val();//.val()?
+         Todo.location = $('#location-input').val().trim();
+         Todo.notes = $("#textArea").val().trim();//.val()?
          console.log(JSON.stringify(Todo));
 
         ///MODAL SUBMITION
