@@ -20,18 +20,27 @@ console.log("hheyyyy  starting profile-modal")
                 url: urlTemp,
                 timeout: 2000,
                 success: function(data) {
+                    // need to get task id from data column title is id so find correct data.id
                     console.log("successful task list query");
-                    console.log(JSON.stringify(data));
                     task = "";
-                            var dropDown=("<div>");
-                            dropDown.attr("id","down");
-                            dropDown.html("");
-                    for(i=0;i<data.length;i++){
+                    //dropDown.html("");
+                    $("#taskselect").html("");
+                    if (data.length < 7) {
+                        for(i=0;i<data.length;i++){
                             console.log(data[i].task);
-                            dropDown.append(data[i].task)
-                            $("#task-input").append(drop+ "<br>");
+                            var dropDown = "<div class='down btn' data-value='" + data[i].id+"'>"+data[i].task+"</div><br>";
+                        
+                            $("#taskselect").append(dropDown);
                             //task = $(this).val();
                         }
+                    } else {
+                        for(i=0;i < 7;i++){
+                            console.log(data[i].task);
+                            var dropDown = "<div class='down btn' data-value='" + data[i].id+"'>"+data[i].task+"</div><br>";
+                            $("#taskselect").append(dropDown);
+                            //task = $(this).val();
+                        }
+                    }
                          task = $('#task-input').val().trim();
                          //SubmitForm();
                 },

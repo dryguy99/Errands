@@ -18,6 +18,11 @@
     padding: 0;
     background-color: lavender;
     }
+    .down {
+        width: 30vw;
+        background: lightblue;
+        color: white;
+    }
     #map {
     height: 300px;
     width: 100%;
@@ -76,5 +81,5 @@ li,ol{
 }
 
 .btn-primary,.btn{
-        width:120px;
+        width:30vw;
 }
