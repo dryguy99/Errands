@@ -11,6 +11,7 @@ console.log("hheyyyy  starting profile-modal")
         if($(this).val().length<8){
             console.log('running ajax request for task list');
             var data = $(this).val();
+            data.toLowerCase();
             var urlTemp = url + "mytask/" + data;
             console.log(urlTemp);
             console.log(data);
@@ -32,7 +33,7 @@ console.log("hheyyyy  starting profile-modal")
                             //task = $(this).val();
                         }
                          task = $('#task-input').val().trim();
-                         SubmitForm();
+                         //SubmitForm();
                 },
                 error: function(jqXHR, textStatus, err) {
                     console.log("error on task query: " + err + "Text Status; " + textStatus + " jqXHR: " + JSON.stringify(jqXHR));
@@ -55,15 +56,17 @@ console.log("hheyyyy  starting profile-modal")
     $(document).on("click", "#submit", function (){
          event.preventDefault();
          console.log("hello - onclick #submit inside SubmitForm");
+         Todo.week_day = $('#day-input').val().trim();
          Todo.task = $('#task-input').val().trim();
          Todo.location= $('#location-input').val().trim();
          Todo.time= $('#time-input').val().trim();
-         Todo.duration= $('#duration-input').value.trim();//.val()?
+         Todo.duration= $('#duration-input').val();//.val()?
          Todo.textArea= $("#textArea").val().trim();//.val()?
          console.log(JSON.stringify(Todo));
 
         ///MODAL SUBMITION
-        var urlTemp = url + "/api/todo";
+        var urlTemp = url + "maketodo/";
+        console.log(urlTemp);
         $.ajax({
             type: "POST",
             url: urlTemp,
@@ -73,7 +76,8 @@ console.log("hheyyyy  starting profile-modal")
                     Todo.task = data.task 
                     console.log(JSON.stringify(data));
             }, //end success
-            error: function(jqXHR, textStatus, err){     
+            error: function(jqXHR, textStatus, err){ 
+            console.log("error: " + err);    
             } //end error
         }); // end ajax call
     }); // end on click event     

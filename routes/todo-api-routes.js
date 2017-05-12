@@ -13,7 +13,7 @@ var db = require("../models");
 module.exports = function(app) {
 
   // GET route for getting all of the posts
-  app.get("/api/todo", function(req, res) {
+  app.get("/todo/", function(req, res) {
     var query = {};
     if (req.query.users_id) {
       query.usersId = req.query.usesr_id;
@@ -45,7 +45,7 @@ module.exports = function(app) {
   });
 
   // POST route for saving a new post
-  app.post("/api/todo", function(req, res) {
+  app.post("/maketodo", function(req, res) {
     db.todos.create(req.body).then(function(dbtodos) {
       res.json(dbtodos);
     });
