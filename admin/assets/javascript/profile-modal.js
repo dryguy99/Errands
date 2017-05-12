@@ -1,6 +1,8 @@
 var url = "http://localhost:3000/"
 var Todo={};
-var task;
+var task = "";
+var id = -1;
+
 console.log("hheyyyy  starting profile-modal")
 // why is this a function?
 //function keyUp(){
@@ -25,10 +27,11 @@ console.log("hheyyyy  starting profile-modal")
                     task = "";
                     //dropDown.html("");
                     $("#taskselect").html("");
+                    $("#taskselect").css("display", "block");
                     if (data.length < 7) {
                         for(i=0;i<data.length;i++){
                             console.log(data[i].task);
-                            var dropDown = "<div class='down btn' data-value='" + data[i].id+"'>"+data[i].task+"</div><br>";
+                            var dropDown = "<div class='down btn' data-id='" + data[i].id+"' value='" + data[i].task+"'>"+data[i].task+"</div><br>";
                         
                             $("#taskselect").append(dropDown);
                             //task = $(this).val();
@@ -36,7 +39,7 @@ console.log("hheyyyy  starting profile-modal")
                     } else {
                         for(i=0;i < 7;i++){
                             console.log(data[i].task);
-                            var dropDown = "<div class='down btn' data-value='" + data[i].id+"'>"+data[i].task+"</div><br>";
+                            var dropDown = "<div class='down btn' data-value='" + data[i].id+"' value='" + data[i].task+"'>"+data[i].task+"</div><br>";
                             $("#taskselect").append(dropDown);
                             //task = $(this).val();
                         }
@@ -91,6 +94,14 @@ console.log("hheyyyy  starting profile-modal")
         }); // end ajax call
     }); // end on click event     
 //} // end SubmitForm function
-
+$(document).on("click", ".down", function() {
+    console.log(this);
+    task = $(this).attr('value');
+    id = $(this).attr("data-value");
+    console.log ("task: " + task + " id: " + id);
+    $("#task-input").val(task).attr("data-value", id).attr("value", task);
+    $("#taskselect").css("display", "none");
+    $("#taskselect").html("");
+});
 // keyUp();
 // SubmitForm();
