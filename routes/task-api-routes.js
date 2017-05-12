@@ -26,11 +26,11 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/mytask:keyword", function (req,res) {
+  app.get("/mytask/:keyword", function (req,res) {
     console.log('checking my tasks');
     db.tasks.findAll({
       where: {
-        keyword: req.params.keyword
+        keyword: { $like: req.params.keyword + "%"}
       }
     }).then(function(dbtasks) {
       res.json(dbtasks);

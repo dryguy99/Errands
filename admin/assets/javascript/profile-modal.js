@@ -8,20 +8,16 @@ console.log("hheyyyy  starting profile-modal")
     $(document).on("keyup", "#task-input", function (){
         console.log($(this).val());
         
-        
-        if($(this).val().length<4){
-            var data = {
-                keyword: ""
-            }
+        if($(this).val().length<8){
             console.log('running ajax request for task list');
-            data.keyword = $(this).val() + "%";
-            var urlTemp = url + "mytask/";
+            var data = $(this).val();
+            var urlTemp = url + "mytask/" + data;
             console.log(urlTemp);
+            console.log(data);
             $.ajax({
                 type: "GET",
                 url: urlTemp,
                 timeout: 2000,
-                data: data,
                 success: function(data) {
                     console.log("successful task list query");
                     console.log(JSON.stringify(data));
