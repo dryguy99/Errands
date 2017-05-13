@@ -14,37 +14,46 @@
     <link rel="stylesheet" href="assets/css/profile-page.css">
     <script src="assets/javascript/profile-page.js"></script>
     <script src="assets/javascript/profile-modal.js"></script>
+
+    <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:400,700|Sacramento" rel="stylesheet">
+
     <!--  <link rel="stylesheet" href="style.css"> -->
     <title>amenoi</title>
     
   </head>
   <body>
+
+
     <div class="container">
+
+      <div id="nametitle" >
+        <h1 class="text-center" >Anemoi</h1>
+      </div>
       
       <div class="jumbotron" style="background-color:#156C9B;" >
-        <div  id="map" class="text-center" style="font-size:80px;">Hello Tom</div>
+        <div  id="map" class="text-center" style="font-size:80px;"></div>
         <!--  <img class="post-2" src=""> -->
       </div>
+<div id ="fun" style="position:relative; right:-30px">
+          <div class="profile" id="name"></div>
+          <div class="profile" id="date" style="position:relative; left:-30px"> </div>
+          <div class="profile" id="time"> </div>
+
+</div>
       
       <div class="row">
         <div class="col-sm-4" >
           <div>
-            <img class="post" src="assets/images/post.png">
             <div id="position">
-              <ol> Upcoming Events<br><br>
-                <li>Dry Cleaning 9:30 am</li>
-                <br>
-                <li>Gym  11:30am</li>
+              <ol> Upcoming Events<br>
               </ol>
             </div>
           </div>
         </div>
         
-        
         <div class="col-sm-4 text-center" >
-          <div class="profile" id="name"></div>
-          <div class="profile" id="date"> </div>
-          <div class="profile" id="time"> </div>
+          
           <br>
           <br>
           <div class="col-sm-4" ></div>
@@ -171,7 +180,7 @@
         </div>
         
         <div class="col-sm-4" id= "erase-button" class="pos">
-          <img id="post" class="post" src="assets/images/post.png" text="Hello">
+         
           <!-- <button class="btn btn-primary text-center" type="button" id="up">clear</button> -->
           
           <div id="directions-panel" style="overflow:auto">
@@ -184,6 +193,21 @@
         
       </div>
     </div>
+
+<footer class="row footer container-fluid" id="foot">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+    <br>
+    <h4 class="myfooter">Copyright&copy; 2017 Project Group Awesome</h4>
+    <h4 class="myfooter">
+    <a class="myfooter" href="https://timothy-dry.herokuapp.com" target="_blank">Timothy Dry </a>|
+    <a class="myfooter" href="#" target="_blank"> Tom Frazzitta </a>|
+    <a class="myfooter" href="#" target="_blank"> Kris Jackson </a>|
+    <a class="myfooter" href="#" target="_blank"> Matthew Jakobovic </a>|
+    <a class="myfooter" href="http://alyssasantopadre.com/" target="_blank"> Alyssa Santopadre</a>
+    </h4>
+</div>
+</footer>
+
     
     
     <script async defer
