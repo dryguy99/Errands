@@ -17,8 +17,10 @@ module.exports = function(app) {
 
   // GET route for getting all of the posts
   app.get("/todo", function(req, res) {
-    var query = {};
-    if (req.query.users_id) {
+    //console.log(res[0].DataValues.UserId)
+       var query = {};
+    if (req.query.users_id){
+      console.log(req.query.users_id)
       query.usersId = req.query.user_id;
     }
     // Here we add an "include" property to our options in our findAll query
@@ -28,6 +30,7 @@ module.exports = function(app) {
       where: query,
       include: [db.users]
     }).then(function(dbtodos) {
+      console.log(dbtodos)
       res.json(dbtodos);
     });
   });
