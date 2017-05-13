@@ -25,6 +25,7 @@ $( this ).find( "span:last" ).remove();
 $(document).on("click", "#mod", function (){
   event.preventDefault();
 	console.log($(this).val())
+	$("#kris").text("ASSHOLE")
 	a= $(this).val();
 	// $("#submitBtn2").hide();
 	// $("#myform").show();

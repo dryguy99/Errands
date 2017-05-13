@@ -23,6 +23,7 @@ $( this ).find( "span:last" ).remove();
 }
 );
 $(document).on("click", "#mod", function (){
+	$("#kris").text("Signup")
   event.preventDefault();
 	console.log($(this).val())
 	a= $(this).val();
@@ -40,6 +41,7 @@ $(document).on("click", "#mod", function (){
 
 
 $(document).on("click", "#mod-1", function (){
+	$("#kris").text("Login")
 	$("#boom-1").show();
 	$("#boom").hide();
 	// $("#push").hide();
