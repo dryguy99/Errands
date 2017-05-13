@@ -54,6 +54,14 @@ p{
  #directions-panel,#directions-panel-1,#directions-panel-2 {
  padding: 10px;
  position: relative;
+ color:white;
+ font-weight: bold;
+}
+
+#list{
+    color: white;
+    font-weight: bold;
+    
 }
 
 .profile{

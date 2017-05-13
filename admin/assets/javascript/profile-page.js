@@ -1,4 +1,5 @@
 //globals
+var url = "http://localhost:3000/"
 var start;
 var end;
 var lat;
@@ -6,12 +7,15 @@ var long;
 var map;
 var service;
 var mapOptions;
+var locaton;
 var e = moment().format('MM/DD/YYYY');
 var d = new Date(moment().format('MM/DD/YYYY'))
 var time = moment().format('hh:mm');
+var waypointArray=["Rutgers University"];
 console.log(d)
+var Items={};
 
-
+List();
 //map and geolocation
 function initMap() {
   lat = long = 0.0;
@@ -78,8 +82,8 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 //       console.log(data)
 //      })
 
-var waypointArray=["Ocean County Mall","300 Pompton Rd.","Jackson,NJ", "10 Westfield Ave"];
-
+ //waypointArray=["Ocean County Mall","300 Pompton Rd.","Jackson,NJ", "10 Westfield Ave"];
+console.log(waypointArray);
 
 var index= waypointArray.length;
 end = waypointArray[index-1];
@@ -125,6 +129,8 @@ var waypts = [];
 
 //direction onclick function
 $("#dir").on("click",function(){
+
+
 $("#post").hide();
 $("#directions-panel-1").hide();
 $("#directions-panel-2").empty();
@@ -136,12 +142,15 @@ $("#directions-panel").css("color","white");
 })
 
 //list onclick function
-$("#list").on("click",function(){
+$(document).on("click", "#list", function(){
+
+  console.log(Items);
+   //var my location = List();
 $("#post").hide(); 
 $("#directions-panel").hide();
 $("#directions-panel-2").empty();
 $("#directions-panel-1").show();
-$("#directions-panel-1").html("Monday jhakjASJ");
+//$("#directions-panel-1").append("<ul id='list'> My List<li id='list'>" + Items.weekDay+ "</li> <li id='list'>" + Items.startTime+ "</li><li id='list'>" + Items.location + "</li></ul>");
 $("#directions-panel-1").css("background-color"," #156C9B");
 $("#directions-panel-1").css("color","white");
 $('#submit-dest').css("background-color","red");
@@ -174,3 +183,48 @@ $("#post").show();
 })
 }
 
+function List(){
+ var urlTemp = url + "todo";
+        $.ajax({
+            type: "GET",
+            url: urlTemp,
+            timeout: 2000,
+            success: function(data) {
+              var location= data[0].location
+                //show content to console for testing
+                console.log('success!!');
+                //console.log(data);
+                // if (data.length > 1) {
+                  for (var i = 0; i < data.length; i++) {
+                    console.log("todo data: " + data[i]);
+                      $("#directions-panel-1").append("<ul id='list'> My List<li id='list'>" + data[i].week_day+ "</li> <li id='list'>" + data[i].start_time+ "</li><li id='list'>" + data[i].location + "</li></ul>");
+$("#directions-panel-1").css("background-color"," #156C9B");
+$("#directions-panel-1").hide();
+                     //data[i].location.push(waypointArray)
+                    waypointArray.push(data[i].location)
+                  }
+                // } else {
+                    console.log("todo data: " + data[0].location);
+                     Items.location= data[0].location;
+                     Items.weekDay= data[0].week_day;
+                     Items.startTime= data[0].start_time;
+
+                // }
+            
+                //console.log(JSON.stringify(data));
+                //window.open(url+"profile-page.html");
+            },
+            error: function(jqXHR, textStatus, err) {
+                //show error message
+                console.log('text status '+textStatus+', err '+err);
+                if (err === "timeout") {
+               
+                    console.log("waiting for server...");
+                    //postItem(myJson);
+                } 
+
+                
+            }
+        });
+          return Items;
+  }

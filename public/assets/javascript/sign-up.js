@@ -99,11 +99,11 @@ $(document).on("click", "#submitBtn", function (){
 $(document).on("click", "#submitBtn2", function (){
   event.preventDefault();
 	login={};
-	login.username = $('#userNameInput').val().trim();
-	login.password = $('#passwordInput').val().trim();
+	login.username = $('#userNameInput2').val().trim();
+	login.password = $('#passwordInput2').val().trim();
 	console.log(JSON.stringify(login));
-			$('#userNameInput').val("");
-			$('#passwordInput').val("");
+			$('#userNameInput2').val("");
+			$('#passwordInput2').val("");
 
 			Authorize(login);
 });

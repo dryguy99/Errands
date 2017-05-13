@@ -93,7 +93,13 @@ console.log("hheyyyy  starting profile-modal")
             console.log("error: " + err);    
             } //end error
         }); // end ajax call
-
+          $('#day-input').val(" ")
+         $('#task-input').val(" ")
+          $('#time-input').val("")
+          $('#duration-input').val(" ");//.val()?
+          $('#location-input').val(" ");
+          $("#textArea").val(" ");//.val()
+          window.location.reload();
     }); // end on click event     
 //} // end SubmitForm function
 $(document).on("click", ".down", function() {
