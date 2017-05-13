@@ -7,9 +7,12 @@
 	background-image: url(https://s-media-cache-ak0.pinimg.com/originals/4a/2e/4d/4a2e4d2ab28310cce88d26e90ba6ca03.jpg); 
 }
 
-.text-center{
-	font-family: 'PT Serif', serif;
+
+
+h1{
+	font-family: 'Sacramento', cursive;
 	color: #3380cc;
+	font-stretch: 60%;
 }
 
 form{
@@ -31,15 +34,14 @@ form{
 
 #name{
 	color:#3380cc;
+    font-size: 300%;
 }
 
 #hidden{
 	color:#3380cc;
 	font-weight: bolder;
-	font-family: 'Playfair Display', serif;;
+	font-family: 'Josefin Slab', serif;
 	font-size: 200%;
-	background-color: ;
-	
 }
 
 form{
@@ -55,12 +57,14 @@ form{
 	color:red;
 }
 
-.jumbotron{
-	font-family:'PT Serif', serif ;
-	background-color: white; 
+#submitBtn2{
+	background: white;
 	color: #3380cc;
 }
 
+#submitBtn2:hover{
+	color:red;
+}
 
 #mod{
 	border-color: #1d42c9; 
@@ -91,15 +95,6 @@ form{
 	color: white;
 }
 
-h1{
-	font-family: 'Lobster Two', cursive;
-}
-
-.new{
-	background-image: url(https://img0.etsystatic.com/063/0/8905658/il_340x270.791442340_mayi.jpg);
-	background-position: center;
-	
-}
 
 .row{
 	color: white;
@@ -117,6 +112,7 @@ h1{
 
 .myfooter{
 	color: white;
+
 }
 
 #boom{
@@ -130,12 +126,21 @@ h1{
 
 #kris{
 	color:#3380cc;
+	font-size: 250%;
+	font-family: 'Josefin Slab', serif;
+	font-weight: bolder;
+
 }
 
 label{
 	color:#3380cc;
+	font-family: 'Josefin Slab', serif;
 }
 
 #boom-1{
 	background-color: white;
+}
+
+.form-control{
+	font-family: 'Josefin Slab', serif;
 }
