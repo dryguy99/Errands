@@ -23,6 +23,7 @@ $( this ).find( "span:last" ).remove();
 }
 );
 $(document).on("click", "#mod", function (){
+	$("#kris").text("Signup")
   event.preventDefault();
 	console.log($(this).val())
 	a= $(this).val();
@@ -40,6 +41,7 @@ $(document).on("click", "#mod", function (){
 
 
 $(document).on("click", "#mod-1", function (){
+	$("#kris").text("Login")
 	$("#boom-1").show();
 	$("#boom").hide();
 	// $("#push").hide();
@@ -96,14 +98,12 @@ $(document).on("click", "#submitBtn", function (){
 // $("#submitBtn2").on("clicK",function (){
 $(document).on("click", "#submitBtn2", function (){
   event.preventDefault();
+	login={};
 	login.username = $('#userNameInput').val().trim();
 	login.password = $('#passwordInput').val().trim();
-	console.log(JSON.stringify(Authorize));
-
+	console.log(JSON.stringify(login));
 			$('#userNameInput').val("");
-			$('#emailInput').val("");
 			$('#passwordInput').val("");
-			$('#phoneInput').val("");
 
 			Authorize(login);
 });
@@ -117,15 +117,17 @@ function signUp (data) {
             timeout: 2000,
             data: data,
             success: function(data) {
-                console.log(data)
                 //show content to console for testing
-                console.log(JSON.stringify(data));
+                console.log('success!!');
+                window.location.replace(url+ "admin/");
+                //console.log(JSON.stringify(data));
+                //window.open(url+"profile-page.html");
             },
             error: function(jqXHR, textStatus, err) {
                 //show error message
                 console.log('text status '+textStatus+', err '+err);
                 if (err === "timeout") {
-                $("#error").html("Username or password is incorrect")
+                $("#error").html("Username or password is incorrect");
                     console.log("waiting for server...");
                     //postItem(myJson);
                 } 
@@ -137,9 +139,9 @@ function signUp (data) {
 }
 
 function Authorize(data){
-    console.log("hey authorize me: " + data);
+    console.log("hey authorize me: " + data.body);
     var urlTemp = url + "authenticate/";
-    console.log(urlTemp);
+    console.log(' IS THIS THE ROUTE ' + urlTemp);
         $.ajax({
             type: "POST",
             url: urlTemp,
@@ -148,7 +150,10 @@ function Authorize(data){
             success: function(data) {
                     if(data.username==="")
                 console.log(JSON.stringify(data));
-            	console.log("authenticted");
+            	console.log("authenticted NOW ");
+            	window.location.replace(url+ "admin/");
+			//$.window.open("about:blank", "profile-page.html");
+			//window.open('http://localhost:3000/profile-page.html');
             },
             error: function(jqXHR, textStatus, err) {
                 //show error message

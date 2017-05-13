@@ -43,6 +43,7 @@ module.exports = function(sequelize, DataTypes) {
         validPassword: function (password, passwd, done, user) {
           bcrypt.compare(password, passwd, function (err, isMatch) {
             if (err) {console.log(err);}
+            console.log("password: " + "'" + password+ "'" + " passwd: " + "'" + passwd+"'");
             if (isMatch) {
               return done(null, user);
             } else {
@@ -63,9 +64,7 @@ module.exports = function(sequelize, DataTypes) {
     });
     bcrypt.hash(user.password, salt, null, function(err, hash) {
       if (err) return next(err);
-      console.log("before: " + user.password);
       user.password = hash;
-      console.log("after" + user.password);
       return fn(null, user);
     });
   });

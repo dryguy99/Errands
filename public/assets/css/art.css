@@ -1,10 +1,17 @@
-body {
-	background-color: #3380cc
+.jumbotron{
+	background-color: grey;
+}
+
+
+.page {
+	background-image: url(https://s-media-cache-ak0.pinimg.com/originals/4a/2e/4d/4a2e4d2ab28310cce88d26e90ba6ca03.jpg); 
 }
 
 .text-center{
 	font-family: 'PT Serif', serif;
+	color: #3380cc;
 }
+
 form{
 	background-color: #3380cc;
 	color:#3380cc;
@@ -12,8 +19,8 @@ form{
 	margin: 0 auto;
 	text-align: center;
 	width: 50%;
-
 }
+
 .form-group{
 	text-align: center;
 	font-size: 150%;
@@ -22,32 +29,113 @@ form{
 	margin: 0 auto;
 }
 
+#name{
+	color:#3380cc;
+}
+
 #hidden{
-	color: #3380cc;
+	color:#3380cc;
 	font-weight: bolder;
 	font-family: 'Playfair Display', serif;;
 	font-size: 200%;
+	background-color: ;
+	
 }
+
 form{
 	text-align: center;
 	color: white;
 }
-#submit{
+
+#submitBtn{
 	background: white;
 	color: #3380cc;
 }
+#submitBtn:hover{
+	color:red;
+}
+
 .jumbotron{
 	font-family:'PT Serif', serif ;
 	background-color: white; 
-	background-image: url(https://s-media-cache-ak0.pinimg.com/originals/4a/2e/4d/4a2e4d2ab28310cce88d26e90ba6ca03.jpg); 
-	background-position: center; 
 	color: #3380cc;
 }
-button{
-	background-color: white; 
-	color:#3380cc;
+
+
+#mod{
+	border-color: #1d42c9; 
+	font-weight: bolder;
+	color:#3380cc; 
+	text-align: center;
+	margin: auto 0 ;
+	font-weight: bolder;
+
 }
+
+#mod:hover{
+	background-color: #4d6de6;
+	color: white;
+}
+
+#mod-1{
+	border-color: #1d42c9; 
+	font-weight: bolder;
+	color:#3380cc;
+	text-align: center;
+	margin: auto 0 ;
+	font-weight: bolder;
+}
+
+#mod-1:hover{
+	background-color: #4d6de6;
+	color: white;
+}
+
 h1{
 	font-family: 'Lobster Two', cursive;
 }
 
+.new{
+	background-image: url(https://img0.etsystatic.com/063/0/8905658/il_340x270.791442340_mayi.jpg);
+	background-position: center;
+	
+}
+
+.row{
+	color: white;
+	text-align: center;
+	font-weight: bolder;
+}
+
+#foot{
+	 position: absolute;
+    bottom: 5%;
+    width: 100%;
+    color: white;
+    font-weight: bolder;
+}
+
+.myfooter{
+	color: white;
+}
+
+#boom{
+	background-color: white;
+}
+
+.modal-body{
+	background-image: url(https://t4.ftcdn.net/jpg/01/13/18/75/240_F_113187525_1D2sYY5Y27gU4Xin7krhIMDR0bRAyjKq.jpg);
+	background-size: cover;
+}
+
+#kris{
+	color:#3380cc;
+}
+
+label{
+	color:#3380cc;
+}
+
+#boom-1{
+	background-color: white;
+}

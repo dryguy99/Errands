@@ -1,0 +1,53 @@
+body {
+	background-color: #3380cc
+}
+
+.text-center{
+	font-family: 'PT Serif', serif;
+}
+form{
+	background-color: #3380cc;
+	color:#3380cc;
+	font-weight: bold;
+	margin: 0 auto;
+	text-align: center;
+	width: 50%;
+
+}
+.form-group{
+	text-align: center;
+	font-size: 150%;
+	color: white;
+	width: 50%;
+	margin: 0 auto;
+}
+
+#hidden{
+	color: #3380cc;
+	font-weight: bolder;
+	font-family: 'Playfair Display', serif;;
+	font-size: 200%;
+}
+form{
+	text-align: center;
+	color: white;
+}
+#submit{
+	background: white;
+	color: #3380cc;
+}
+.jumbotron{
+	font-family:'PT Serif', serif ;
+	background-color: white; 
+	background-image: url(https://s-media-cache-ak0.pinimg.com/originals/4a/2e/4d/4a2e4d2ab28310cce88d26e90ba6ca03.jpg); 
+	background-position: center; 
+	color: #3380cc;
+}
+button{
+	background-color: white; 
+	color:#3380cc;
+}
+h1{
+	font-family: 'Lobster Two', cursive;
+}
+

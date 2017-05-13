@@ -13,6 +13,8 @@ var path = require("path");
 //var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var Nexmo = require('nexmo');
+var cookieParser = require('cookie-parser');
+var fs = require('fs');
 //var GoogleMapsLoader = require('google-maps');
 SALT_WORK_FACTOR = 10;
 // Sets up the Express App
@@ -34,6 +36,7 @@ var allowCrossDomain = function(req, res, next) {
 };
 app.use(allowCrossDomain);
 app.use(methodOverride("_method"));
+app.use(cookieParser());
 
 // GoogleMapsLoader.KEY = "AIzaSyAR_p6CcoLnuOI8m9N_LcEFzW5whT1d6X0";
 // GoogleMapsLoader.load(function(google) {
@@ -66,20 +69,32 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Static directory
-app.use('/public', express.static(__dirname + "/public"));
+app.use('/admin', express.static(__dirname + "/admin"));
+// app.all("/admin/*", requireLogin, function(req, res, next) {
+//   console.log("running admin");
+//   next(); // if the middleware allowed us to get here,
+//           // just move on to the next route handler
+// });
+app.use('/', express.static(__dirname + "/public"));
 app.use(passport.initialize());
 app.use(passport.session());
 app.get('/login', application.IsAuthenticated, function(req, res) {
-     res.sendFile(path.join(__dirname + '/public/profile-page.html'));
+  console.log("login: " + IsAuthenticated);
+     res.redirect('/admin');
   });
-    app.post('/authenticate',
-      passport.authenticate('local', {
-        successRedirect: '/login',
-        failureRedirect: '/public'
-      })
-    );
-    app.get('/logout', application.destroySession);
-    app.get('/signup');
+//fs.writeFile("user.txt", req.body.username + " , " + res.body.userid);
+app.post('/authenticate',
+
+  passport.authenticate('local', { failureRedirect: '/', failureFlash: false }),
+      function(req, res) {
+       // If this function gets called, authentication was successful.
+       // `req.user` contains the authenticated user.
+       fs.writeFile("user.txt", req.user.username + "," + req.user.id);
+       res.redirect('/admin');
+      });
+   
+app.get('/logout', application.destroySession);
+app.get('/signup');
 
 
 //nexmo
@@ -134,3 +149,13 @@ db.sequelize.sync({
   });
 });
 
+function requireLogin(req, res, next) {
+  console.log("test: " + req.isAuthenticated());
+  if (req.isAuthenticated()) {
+    return true;
+    next(); // allow the next route to run
+  } else {
+    // require the user to log in
+    res.redirect("/public"); // or render a form, etc.
+  }
+}

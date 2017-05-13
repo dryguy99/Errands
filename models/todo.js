@@ -8,7 +8,6 @@ module.exports = function (sequelize, DataTypes) {
 		},
 		task_id: {
 			type: DataTypes.STRING,
-			validate: {len: [1] }
 		},
 		start_time: {
 			type: DataTypes.STRING,
