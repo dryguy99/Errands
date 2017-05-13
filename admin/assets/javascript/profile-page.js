@@ -13,14 +13,17 @@ var d = new Date(moment().format('MM/DD/YYYY'))
 var time = moment().format('hh:mm');
 var waypointArray=["Rutgers University"];
 console.log(d)
+var userId;
 var Items={};
 
+
 List();
+//Name();
 //map and geolocation
 function initMap() {
   lat = long = 0.0;
   navigator.geolocation.getCurrentPosition(function(location) {
-    $('#name').text("Hello Tom")
+    $('#name').text("Hello")
     $('#date').html(e)
     $('#time').html(time)
     // $("#clear").hide();
@@ -54,11 +57,20 @@ function initMap() {
 
 
   document.getElementById('submit-dest').addEventListener('click', function() {
+    console.log(Items)
+    
+    if(typeof Items.weekDay==="undefined"){
+      $("#position").append("<div id='water'><center> No Upcoming Errands </div><br>")
+    }
+    else{
+    $("#position").append("<ul id='list'><li id='list'>" + Items.weekDay+ "</li> <li id='list'>" + Items.startTime+ "</li><li id='list'>" + Items.location + "</li></ul>");
+    }
     $('#submit-dest').hide();
     $("#clear").show();
     $('#clear').css("background-color","red");
     $('#clear').text("clear");
     $("#post").hide();
+
     calculateAndDisplayRoute(directionsService, directionsDisplay); 
     });
   })
@@ -83,6 +95,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 //      })
 
  //waypointArray=["Ocean County Mall","300 Pompton Rd.","Jackson,NJ", "10 Westfield Ave"];
+ 
 console.log(waypointArray);
 
 var index= waypointArray.length;
@@ -184,22 +197,28 @@ $("#post").show();
 }
 
 function List(){
- var urlTemp = url + "todo";
+ var urlTemp = url + "todo/";
         $.ajax({
             type: "GET",
             url: urlTemp,
             timeout: 2000,
             success: function(data) {
               var location= data[0].location
+              console.log(data[0].userId)
+
+              Items.userId= data[0].userId;
                 //show content to console for testing
                 console.log('success!!');
                 //console.log(data);
                 // if (data.length > 1) {
                   for (var i = 0; i < data.length; i++) {
                     console.log("todo data: " + data[i]);
-                      $("#directions-panel-1").append("<ul id='list'> My List<li id='list'>" + data[i].week_day+ "</li> <li id='list'>" + data[i].start_time+ "</li><li id='list'>" + data[i].location + "</li></ul>");
+                      $("#directions-panel-1").append("<h3><center> Errand " +[i+1]+ "</h3> <li id='list'> Day: " + data[i].week_day+ "</li> <li id='list'> Time: " + data[i].start_time+ "</li><li id='list'> Place: " + data[i].location + "</li><br> <br>");
 $("#directions-panel-1").css("background-color"," #156C9B");
 $("#directions-panel-1").hide();
+
+  
+        
                      //data[i].location.push(waypointArray)
                     waypointArray.push(data[i].location)
                   }
@@ -227,4 +246,34 @@ $("#directions-panel-1").hide();
             }
         });
           return Items;
+         
   }
+
+
+
+  function Name(){
+      console.log(Items)
+ var urlTemp = url + "api/user/:id";
+        $.ajax({
+            type: "GET",
+            url: urlTemp,
+            timeout: 2000,
+            success: function(data) {
+              console.log(data)
+            },
+            error: function(jqXHR, textStatus, err) {
+                //show error message
+                console.log('text status '+textStatus+', err '+err);
+                if (err === "timeout") {
+               
+                    console.log("waiting for server...");
+                    //postItem(myJson);
+                } 
+
+                
+            }
+        });
+          return Items;
+  }
+  
+   Name();
