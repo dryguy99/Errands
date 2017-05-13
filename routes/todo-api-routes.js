@@ -7,6 +7,9 @@
 
 // Requiring our models
 var db = require("../models");
+var myuser = require("./user-api-routes.js");
+var fs = require('fs');
+
 
 // Routes
 // =============================================================
@@ -46,9 +49,26 @@ module.exports = function(app) {
 
   // POST route for saving a new post
   app.post("/maketodo", function(req, res) {
-    db.todos.create(req.body).then(function(dbtodos) {
-      res.json(dbtodos);
+    fs.readFile("user.txt", "utf8", function(err, data) {
+      console.log("1. data: " + data);
+      data = data.split(",");
+      theuserid = data[1];
+      console.log("2. id: " + theuserid);
+      finish(theuserid);
     });
+    function finish(thisid) {
+      console.log("req.body: " +req.body);
+      console.log(thisid);
+      var mybody = req.body;
+      var theuserid= "";
+    
+      mybody.userid = thisid;
+      console.log("3. the data: " + JSON.stringify(mybody));
+      console.log("4. user id: " + mybody.userid);
+      db.todos.create(mybody).then(function(dbtodos) {
+      res.json(dbtodos);
+      });
+    }
   });
 
   // DELETE route for deleting posts

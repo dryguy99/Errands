@@ -98,10 +98,7 @@ $(document).on("click", "#submitBtn", function (){
 // $("#submitBtn2").on("clicK",function (){
 $(document).on("click", "#submitBtn2", function (){
   event.preventDefault();
-  	login={
-		username: "",
-		password: ""
-	}
+	login={};
 	login.username = $('#userNameInput').val().trim();
 	login.password = $('#passwordInput').val().trim();
 	console.log(JSON.stringify(login));
@@ -144,7 +141,7 @@ function signUp (data) {
 function Authorize(data){
     console.log("hey authorize me: " + data.body);
     var urlTemp = url + "authenticate/";
-    console.log(urlTemp);
+    console.log(' IS THIS THE ROUTE ' + urlTemp);
         $.ajax({
             type: "POST",
             url: urlTemp,
@@ -153,7 +150,7 @@ function Authorize(data){
             success: function(data) {
                     if(data.username==="")
                 console.log(JSON.stringify(data));
-            	console.log("authenticted");
+            	console.log("authenticted NOW ");
             	window.location.replace(url+ "admin/");
 			//$.window.open("about:blank", "profile-page.html");
 			//window.open('http://localhost:3000/profile-page.html');

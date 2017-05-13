@@ -14,6 +14,7 @@ var path = require("path");
 var session = require('express-session');
 var Nexmo = require('nexmo');
 var cookieParser = require('cookie-parser');
+var fs = require('fs');
 //var GoogleMapsLoader = require('google-maps');
 SALT_WORK_FACTOR = 10;
 // Sets up the Express App
@@ -74,19 +75,24 @@ app.use('/admin', express.static(__dirname + "/admin"));
 //   next(); // if the middleware allowed us to get here,
 //           // just move on to the next route handler
 // });
-app.use('/public', express.static(__dirname + "/public"));
+app.use('/', express.static(__dirname + "/public"));
 app.use(passport.initialize());
 app.use(passport.session());
 app.get('/login', application.IsAuthenticated, function(req, res) {
   console.log("login: " + IsAuthenticated);
      res.redirect('/admin');
   });
+//fs.writeFile("user.txt", req.body.username + " , " + res.body.userid);
 app.post('/authenticate',
-  passport.authenticate('local', {
-      successRedirect: '/admin',
-      failureRedirect: '/public'
-      })
-    );
+
+  passport.authenticate('local', { failureRedirect: '/', failureFlash: false }),
+      function(req, res) {
+       // If this function gets called, authentication was successful.
+       // `req.user` contains the authenticated user.
+       fs.writeFile("user.txt", req.user.username + "," + req.user.id);
+       res.redirect('/admin');
+      });
+   
 app.get('/logout', application.destroySession);
 app.get('/signup');
 

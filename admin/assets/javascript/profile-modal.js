@@ -67,15 +67,16 @@ console.log("hheyyyy  starting profile-modal")
 
     $(document).on("click", "#submit", function (){
          event.preventDefault();
+
          console.log("hello - onclick #submit inside SubmitForm");
          Todo.week_day = $('#day-input').val().trim();
          Todo.task_id = $('#task-input').attr("data-value");
          Todo.start_time = $('#time-input').val().trim();
          Todo.duration = $('#duration-input').val();//.val()?
          Todo.location = $('#location-input').val().trim();
-         Todo.notes = $("#textArea").val().trim();//.val()?
+         Todo.note = $("#textArea").val().trim();//.val()?
          console.log(JSON.stringify(Todo));
-
+         $('#myModal').modal('hide');
         ///MODAL SUBMITION
         var urlTemp = url + "maketodo/";
         console.log(urlTemp);
@@ -92,6 +93,7 @@ console.log("hheyyyy  starting profile-modal")
             console.log("error: " + err);    
             } //end error
         }); // end ajax call
+
     }); // end on click event     
 //} // end SubmitForm function
 $(document).on("click", ".down", function() {
